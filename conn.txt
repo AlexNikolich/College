@@ -1,0 +1,4 @@
+jdbc:oracle:thin:@(DESCRIPTION =  (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = zenit.senecac.on.ca)(PORT = 1521))  )(CONNECT_DATA =(SERVICE_NAME = neptune)(SERVER=DEDICATED)))
+
+dbs501_171sa32
+13128282
