@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="Customer">
+    	<xs:sequence>
+    		<xs:element name="CustomerID" type="xs:int"></xs:element>
+    		<xs:element name="CompanyName" type="xs:string"></xs:element>
+    		<xs:element name="ContactName" type="xs:string"></xs:element>
+    		<xs:element name="ContactTitle" type="xs:string"></xs:element>
+    		<xs:element name="Address" type="xs:string"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="Employee">
+    	<xs:sequence>
+    		<xs:element name="EmployeeID" type="xs:int"></xs:element>
+    		<xs:element name="LastName" type="xs:string"></xs:element>
+    		<xs:element name="FirstName" type="xs:string"></xs:element>
+    		<xs:element name="Title" type="xs:string"></xs:element>
+    		<xs:element name="TitleOfCurtesy" type="xs:string"></xs:element>
+    		<xs:element name="BirthDate" type="xs:date"></xs:element>
+    		<xs:element name="HireDate" type="xs:date"></xs:element>
+    		<xs:element name="Address" type="xs:string"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="Order">
+    	<xs:sequence>
+    		<xs:element name="OrderID" type="xs:int"></xs:element>
+    		<xs:element name="CustomerID" type="xs:int"></xs:element>
+    		<xs:element name="EmployeeID" type="xs:int"></xs:element>
+    		<xs:element name="OrderDate" type="xs:date"></xs:element>
+    		<xs:element name="ShippingDate" type="xs:date"></xs:element>
+    		<xs:element name="ShipAddress" type="xs:string"></xs:element>
+    		<xs:element name="customer" type="Customer"></xs:element>
+    		<xs:element name="employee" type="Employee"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    
+    <xs:complexType name="OrderDetail">
+    	<xs:sequence>
+    		<xs:element name="SKU" type="xs:int"></xs:element>
+    		<xs:element name="UnitPrice" type="xs:double"></xs:element>
+    		<xs:element name="Quantity" type="xs:int"></xs:element>
+    		<xs:element name="order" type="Order"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:element name="orderDetail" type="OrderDetail"></xs:element>
+    
+ 
+</xs:schema>
