@@ -1,0 +1,5 @@
+https://www.javacodegeeks.com/2016/07/writing-consuming-soap-webservice-spring.html
+https://howtodoinjava.com/spring/spring-boot/spring-boot-soap-webservice-example/
+https://www.codenotfound.com/spring-ws-soap-web-service-consumer-provider-wsdl-example.html
+https://www.concretepage.com/spring-4/spring-4-soap-web-service-producer-consumer-example-with-tomcat
+https://github.com/in28minutes/spring-boot-examples
