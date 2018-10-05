@@ -1,0 +1,37 @@
+SET SERVEROUTPUT ON
+
+CREATE OR REPLACE FUNCTION findEmailColumns( p_tableName IN VARCHAR2,  p_tableColumn in VARCHAR2 )
+  RETURN VARCHAR2
+IS
+    v_query VARCHAR2(200):= 'select '||p_tableColumn||' from '||p_tableName ||' where ' ||p_tableColumn||' like ''%@%'''; 
+    v_result varchar2(500);
+BEGIN
+    EXECUTE IMMEDIATE
+    v_query INTO v_result;
+  IF LENGTH(v_result) > 0 THEN
+    RETURN p_tableName||' '||p_tableColumn || ' contains @ symbol';
+    else return '';
+  END IF ;
+EXCEPTION
+WHEN no_data_found THEN 
+ RETURN ''; 
+  --dbms_output.put_line('no records found');
+WHEN TOO_MANY_ROWS THEN 
+ return p_tableName||' '||p_tableColumn ||' contains @ symbol';  
+WHEN OTHERS THEN
+  RETURN '';  
+  --dbms_output.put_line('An error was encountered - '||SQLCODE||' -ERROR- '||SQLERRM);
+END findEmailColumns;
+
+DECLARE 
+  TYPE cur_type IS REF CURSOR;
+  v_result VARCHAR2(500);
+  v_stringToSearch VARCHAR2(10) :='%@%';
+  v_table VARCHAR2(50);
+  v_column VARCHAR2(50);
+  CURSOR cur IS SELECT owner, table_name, column_name FROM all_tab_columns WHERE OWNER = 'GERARD' and DATA_TYPE = 'VARCHAR2';
+BEGIN
+  FOR res IN cur loop       
+          DBMS_OUTPUT.PUT_LINE (findEmailColumns(res.table_name, res.column_name));
+  end loop;
+END;
